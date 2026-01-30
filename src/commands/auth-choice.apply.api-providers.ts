@@ -36,7 +36,6 @@ import {
   SYNTHETIC_DEFAULT_MODEL_REF,
   VENICE_DEFAULT_MODEL_REF,
   VERCEL_AI_GATEWAY_DEFAULT_MODEL_REF,
-  setAzureApiKey,
   setGeminiApiKey,
   setKimiCodeApiKey,
   setMoonshotApiKey,

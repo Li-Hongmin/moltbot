@@ -17,7 +17,13 @@ describe("Azure URL Fix", () => {
     // Mock fetch to capture the fixed URL
     let capturedUrl = "";
     globalThis.fetch = async (input: RequestInfo | URL) => {
-      capturedUrl = typeof input === "string" ? input : (input as any).url || input.toString();
+      if (typeof input === "string") {
+        capturedUrl = input;
+      } else if (input instanceof URL) {
+        capturedUrl = input.toString();
+      } else {
+        capturedUrl = (input as Request).url;
+      }
       return new Response("{}");
     };
 

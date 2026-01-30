@@ -1,5 +1,5 @@
 import type { AudioTranscriptionRequest, AudioTranscriptionResult } from "../../types.js";
-import { fetchWithTimeout, normalizeBaseUrl, readErrorResponse } from "../shared.js";
+import { fetchWithTimeout, readErrorResponse } from "../shared.js";
 
 export const DEFAULT_AZURE_SPEECH_REGION = "eastus2";
 

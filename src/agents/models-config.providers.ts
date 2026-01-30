@@ -375,9 +375,10 @@ export async function resolveImplicitAzureProvider(params: {
   const deployment = resolveAzureDeployment(env);
   const apiVersion = resolveAzureApiVersion(env);
   const authStore = ensureAuthProfileStore(params.agentDir, { allowKeychainPrompt: false });
+
+  // ✅ Fix: Read API key from env parameter first, then fallback to profile store
   const apiKey =
-    resolveEnvApiKeyVarName("azure") ??
-    resolveApiKeyFromProfiles({ provider: "azure", store: authStore });
+    env.AZURE_API_KEY?.trim() || resolveApiKeyFromProfiles({ provider: "azure", store: authStore });
 
   if (!endpoint || !deployment || !apiKey) {
     return null;
