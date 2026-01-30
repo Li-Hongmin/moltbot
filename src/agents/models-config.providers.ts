@@ -392,9 +392,10 @@ export async function resolveImplicitAzureProvider(params: {
   const baseUrl = `${endpoint}/openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
 
   // Create model definition for the Azure deployment
+  // Note: Model ID is empty because the deployment name is already in the baseUrl
   const models: ModelDefinitionConfig[] = [
     {
-      id: deployment,
+      id: "",
       name: `Azure ${deployment}`,
       reasoning: deployment.toLowerCase().includes("o1") || deployment.toLowerCase().includes("o3"),
       input: deployment.toLowerCase().includes("vision") ? ["text", "image"] : ["text"],
